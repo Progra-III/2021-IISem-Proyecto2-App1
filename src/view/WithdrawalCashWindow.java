@@ -20,7 +20,7 @@ public class WithdrawalCashWindow extends JFrame {
     public WithdrawalCashWindow(){
 
         setContentPane(windowPanel);
-        setTitle("Payment");
+        setTitle("Pantalla de Retiro de Dinero");
         setSize(650,400);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);

@@ -9,11 +9,11 @@ public class Client {
     private String name;
     private String user;
     private String password;
-    private String balance;
+    private Double balance;
 
     //----------------------------
 
-    public Client(String id, String name, String user, String password, String balance) {
+    public Client(String id, String name, String user, String password, Double balance) {
         this.id = id;
         this.name = name;
         this.user = user;
@@ -56,11 +56,11 @@ public class Client {
         this.password = password;
     }
 
-    public String getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(String balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 
@@ -71,7 +71,7 @@ public class Client {
                 ", name='" + name + '\'' +
                 ", user='" + user + '\'' +
                 ", password='" + password + '\'' +
-                ", balance='" + balance + '\'' +
+                ", balance=" + balance +
                 '}';
     }
 

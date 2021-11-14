@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class ChangePasswordWindow extends JFrame{
@@ -19,11 +20,12 @@ public class ChangePasswordWindow extends JFrame{
     public ChangePasswordWindow(){
 
      setContentPane(windowPanel);
-     setTitle("Payment");
+     setTitle("Cambio de Clave");
      setSize(650,400);
      setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
      setResizable(false);
      setButtons();
+     setIconImage();
      setLocationRelativeTo(null);
     }
 
@@ -61,6 +63,10 @@ public class ChangePasswordWindow extends JFrame{
       btnClean.setActionCommand("1");
       btnExit.setActionCommand("2");
       btnAccept.setActionCommand("3");
+    }
+
+    public void setIconImage(){
+
     }
 
     public void displayErrorMessage(String errorMessage){

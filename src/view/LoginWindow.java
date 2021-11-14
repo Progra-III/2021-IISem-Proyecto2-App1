@@ -18,7 +18,7 @@ public class LoginWindow extends JFrame {
 
     public LoginWindow(){
         setContentPane(windowPanel);
-        setTitle("Payment");
+        setTitle("Pantalla de Login");
         setSize(650,400);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);

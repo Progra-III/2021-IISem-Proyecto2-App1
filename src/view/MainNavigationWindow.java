@@ -17,7 +17,7 @@ public class MainNavigationWindow extends JFrame {
     public MainNavigationWindow(){
 
         setContentPane(windowPanel);
-        setTitle("Payment");
+        setTitle("Pantalla Principal");
         setSize(650,400);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
