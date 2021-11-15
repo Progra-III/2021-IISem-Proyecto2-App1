@@ -25,8 +25,8 @@ public class ChangePasswordWindow extends JFrame{
      setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
      setResizable(false);
      setButtons();
-     setIconImage();
      setLocationRelativeTo(null);
+
     }
 
     public JPasswordField getTxtFNewPassword() {
@@ -63,10 +63,6 @@ public class ChangePasswordWindow extends JFrame{
       btnClean.setActionCommand("1");
       btnExit.setActionCommand("2");
       btnAccept.setActionCommand("3");
-    }
-
-    public void setIconImage(){
-
     }
 
     public void displayErrorMessage(String errorMessage){
