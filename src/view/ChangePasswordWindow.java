@@ -1,7 +1,6 @@
 package view;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class ChangePasswordWindow extends JFrame{
@@ -29,16 +28,16 @@ public class ChangePasswordWindow extends JFrame{
 
     }
 
-    public JPasswordField getTxtFNewPassword() {
-        return txtFNewPassword;
+    public char[] getTxtFNewPassword() {
+        return txtFNewPassword.getPassword();
     }
 
-    public JPasswordField getTxtFActualPassword() {
-        return txtFActualPassword;
+    public char[] getTxtFActualPassword() {
+        return txtFActualPassword.getPassword();
     }
 
-    public JPasswordField getTxtFConfirmPassword() {
-        return txtFConfirmPassword;
+    public char[] getTxtFConfirmPassword() {
+        return txtFConfirmPassword.getPassword();
     }
 
     public void cleanTxtNewPassword(){

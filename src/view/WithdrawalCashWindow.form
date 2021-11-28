@@ -44,10 +44,11 @@
           </grid>
         </constraints>
         <properties>
+          <editable value="false"/>
           <text value=""/>
         </properties>
       </component>
-      <component id="e69c1" class="javax.swing.JTextField" binding="txtFMoutRemoved">
+      <component id="e69c1" class="javax.swing.JTextField" binding="txtFMountRemoved">
         <constraints>
           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -61,7 +62,9 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <editable value="false"/>
+        </properties>
       </component>
       <component id="2bdca" class="javax.swing.JButton" binding="btnClean">
         <constraints>

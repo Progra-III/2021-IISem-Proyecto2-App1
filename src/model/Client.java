@@ -1,90 +1,112 @@
 package model;
 
-import java.util.Objects;
+import controller.LoginController;
+import controller.MainNavigationController;
+import controller.WithdrawalCashController;
 
-public class Client {
+import java.util.Objects;
+import java.io.*;
+import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+public class Client extends Thread {
 
     //---------------------------
-    private String id;
-    private String name;
-    private String user;
-    private String password;
-    private Double balance;
 
-    //----------------------------
+    LoginController loginController;
+    MainNavigationController mainNavigationController;
+    WithdrawalCashController withdrawalCashController;
 
-    public Client(String id, String name, String user, String password, Double balance) {
-        this.id = id;
-        this.name = name;
-        this.user = user;
-        this.password = password;
-        this.balance = balance;
+    final int PUERTO = 7020;
+    final String HOST = "localhost";                                                            //127.0.0.1
+
+    public Socket socket;
+    BufferedReader bufferedReader;
+    BufferedWriter bufferedWriter;
+
+    //---------------------------
+
+    public void setController(LoginController loginController){
+        this.loginController = loginController;
     }
 
-    public Client() {
+    public void connectServer(){
+        try {
+            socket = new Socket(HOST,PUERTO);
+        } catch (IOException e) {
+            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 
-    public String getId() {
-        return id;
+    public void createDataFlow(){
+        try {
+            InputStream is = socket.getInputStream();
+            InputStreamReader isr = new InputStreamReader(is);
+            bufferedReader = new BufferedReader(isr);
+
+            OutputStream os = socket.getOutputStream();
+            OutputStreamWriter osw = new OutputStreamWriter(os);
+            bufferedWriter = new BufferedWriter(osw);
+        } catch (IOException e) {
+            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void sendMessage(String usuario){
+        try {
+            bufferedWriter.write(usuario);
+            bufferedWriter.newLine();
+            bufferedWriter.flush();
+        }catch (IOException ex){
+            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    public void closeAll(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
+        try {
+            if (bufferedReader != null){
+                bufferedReader.close();
+            }if (bufferedWriter != null){
+                bufferedWriter.close();
+            }if (socket != null){
+                socket.close();
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
-    public String getName() {
-        return name;
+    public String receiveTransaction() {
+        try {
+            String mensaje = bufferedReader.readLine();
+            return mensaje;
+        }catch (IOException ex){
+            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String receiveChange() {
+        try {
+            String mensaje = bufferedReader.readLine();
+            return mensaje;
+        }catch (IOException ex){
+            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
     }
 
-    public String getUser() {
-        return user;
+    public String receive(){
+        try {
+            String mensaje = bufferedReader.readLine();
+            return mensaje;
+        }catch (IOException ex){
+            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
     }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(Double balance) {
-        this.balance = balance;
-    }
-
-    @Override
-    public String toString() {
-        return "Client{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", user='" + user + '\'' +
-                ", password='" + password + '\'' +
-                ", balance=" + balance +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Client)) return false;
-        Client client = (Client) o;
-        return Objects.equals(getId(), client.getId()) && Objects.equals(getName(), client.getName()) && Objects.equals(getUser(), client.getUser()) && Objects.equals(getPassword(), client.getPassword()) && Objects.equals(getBalance(), client.getBalance());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getName(), getUser(), getPassword(), getBalance());
-    }
 }

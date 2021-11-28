@@ -1,5 +1,6 @@
 package controller;
 
+import model.Client;
 import view.LoginWindow;
 import view.MainNavigationWindow;
 
@@ -10,10 +11,13 @@ public class MainNavigationController {
 
     //-------------------------------
     private MainNavigationWindow mainNavigationWindow;
+    String user;
+    String password;
+    Client client;
 
     //-------------------------------
 
-    public MainNavigationController() {
+    public MainNavigationController(String user, String password, Client client) {
         this.mainNavigationWindow = new MainNavigationWindow();
 
         MainNavigationController.ButtonListener action = new MainNavigationController.ButtonListener();
@@ -21,6 +25,11 @@ public class MainNavigationController {
 
         this.mainNavigationWindow.setVisible(true);
 
+        this.user = user;
+
+        this.password = password;
+
+        this.client = client;
     }
 
     private class ButtonListener implements ActionListener {
@@ -33,18 +42,18 @@ public class MainNavigationController {
             switch (valor) {
                 case 1:
                     //HACER RETIRO
-                    WithdrawalCashController withdrawalCashController = new WithdrawalCashController();
+                    WithdrawalCashController withdrawalCashController = new WithdrawalCashController(user,password,client);
                     break;
                 case 2:
                     //CHANGE PASSWORD
-                    ChangePasswordController changePasswordController = new ChangePasswordController();
+                    ChangePasswordController changePasswordController = new ChangePasswordController(user,password,client);
                     mainNavigationWindow.setVisible(false);
                     break;
 
                 case 3:
                     //EXIT
-                    LoginController loginController = new LoginController();
-                    mainNavigationWindow.setVisible(false);
+                    client.sendMessage("Saliendo");
+                    System.exit(1);
                     break;
             }
         }

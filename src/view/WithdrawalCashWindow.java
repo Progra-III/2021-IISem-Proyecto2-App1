@@ -7,7 +7,7 @@ public class WithdrawalCashWindow extends JFrame {
 
    //--------------------------------------------
     private JTextField txtFAccountBalance;
-    private JTextField txtFMoutRemoved;
+    private JTextField txtFMountRemoved;
     private JTextField txtFResult;
     private JButton btnClean;
     private JButton btnExit;
@@ -28,29 +28,35 @@ public class WithdrawalCashWindow extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    public JTextField getTxtFAccountBalance() {
-        return txtFAccountBalance;
+    public void setTxtFAccountBalance(String txt){ txtFAccountBalance.setText(txt);}
+
+    public void setTxtFResult(String txt){ txtFResult.setText(txt);}
+
+    public String getTxtFAccountBalance() {
+        return txtFAccountBalance.getText();
     }
 
-    public JTextField getTxtFMoutRemoved() {
-        return txtFMoutRemoved;
+    public String getTxtFMountRemoved() {
+        return txtFMountRemoved.getText();
     }
 
-    public JTextField getTxtFResult() {
-        return txtFResult;
+    public String getTxtFResult() {
+        return txtFResult.getText();
     }
+
 
     public void cleanTxtFAccountBalance(){
         txtFAccountBalance.setText(null);
     }
 
     public void cleanTxtFMountRemoved(){
-        txtFMoutRemoved.setText(null);
+        txtFMountRemoved.setText(null);
     }
 
     public void cleanTxtFResult(){
         txtFResult.setText(null);
     }
+
 
     public void addListener(ActionListener action){
         btnClean.addActionListener(action);

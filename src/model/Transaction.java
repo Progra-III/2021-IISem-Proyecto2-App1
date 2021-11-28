@@ -1,6 +1,6 @@
 package model;
 
-public class Transaction {
+public class Transaction  {
 
     //-----------------------------------
     private String idTransaction;

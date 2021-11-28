@@ -27,12 +27,12 @@ public class LoginWindow extends JFrame {
 
     }
 
-    public JPasswordField getTxtFPassword() {
-        return txtFPassword;
+    public char[] getTxtFPassword() {
+        return txtFPassword.getPassword();
     }
 
-    public JTextField getTxtFUser() {
-        return txtFUser;
+    public String getTxtFUser() {
+        return txtFUser.getText();
     }
 
     public void addListener(ActionListener action){
